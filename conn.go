@@ -1261,3 +1261,7 @@ func FormatCloseMessage(closeCode int, text string) []byte {
 	copy(buf[2:], text)
 	return buf
 }
+
+func (c *Conn) SetnoDelay(enable bool) error {
+	return c.conn.(*net.TCPConn).SetNoDelay(enable)
+}
